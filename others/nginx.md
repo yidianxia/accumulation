@@ -7,7 +7,7 @@
 - 免费使用可以商业化
 - 配置文件简单
 
-**先看本配置说明**
+**先看配置说明**
 
 ```nginx
 user nobody;
@@ -203,8 +203,8 @@ location = /50x.html {
 
 ```nginx
 location / {
-	deny 123.4.56.78 // 禁止访问
-	allow 12.34.567.789 // 允许访问
+	deny 123.4.56.78 
+	allow 12.34.567.789
     deny all
 }
 # 同一个块下的两个权限指令，先出现的设置会覆盖后出现的设置（也就是谁先触发，谁起作用）。
@@ -299,16 +299,14 @@ server{
 
 **简单的反向代理**
 
-现在我们要访问`http://nginx2.jspang.com`然后反向代理到`jspang.com`这个网站。我们直接到`etc/nginx/con.d/8001.conf`进行修改。
-
-修改后的配置文件如下：
+现在我们要访问`http://xxx.xxx.com;`然后反向代理到`www.baidu.com`这个网站。我们直接修改配置文件如下：
 
 ```nginx
 server{
         listen 80;
         server_name xxx.xxx.com;
         location / {
-               proxy_pass http://baidu.com;
+               proxy_pass http://www.baidu.com;
         }
 }
 ```
